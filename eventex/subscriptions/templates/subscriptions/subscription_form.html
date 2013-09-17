@@ -1,1 +1,59 @@
-<h1>Formulário de inscrição</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="well">
+<form role="form" action="." method="POST">
+    {% csrf_token %}
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Formulário de inscrição</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="control-label">Nome</label>
+            <div class="controls">
+                <input id="name" name="name" placeholder="Ex: José da Silva" class="form-control" required="" type="text">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="control-label">CPF</label>
+            <div class="controls">
+                <input id="cpf" name="cpf" placeholder="Ex: 00000000000" class="form-control" required="" type="text">
+
+            </div>
+        </div>
+
+        <!-- Prepended text-->
+        <div class="form-group">
+            <label class="control-label">Email</label>
+            <div class="input-group">
+                <span class="input-group-addon">@</span>
+                <input type="text" class="form-control" placeholder="seu@email.com">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="control-label">Telefone</label>
+            <div class="controls">
+                <input id="telefone" name="telefone" placeholder="Ex: 8211111111" class="form-control" required="" type="text">
+
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="control-label"></label>
+            <div class="controls">
+                <button id="enviar" name="enviar" class="btn btn-lg btn-success">Enviar!</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+</div>
+{% endblock content %}

@@ -1,52 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% extends 'base.html' %}
 
-    <title>EventeX!</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{{ STATIC_URL }}assets/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ STATIC_URL }}assets/css/sticky-footer.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}assets/css/justified-nav.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Patrick+Hand' rel='stylesheet' type='text/css'>
-
-    <style>
-    body {background: url({{ STATIC_URL }}assets/img/bg/diamond_upholstery.png) center fixed;}
-    .fontelogo {font-family: 'Patrick Hand', cursive; font-size: 120px;}
-    #footer {background-color: rgb(64,81,117);}
-    #footer p {color: #FFF;}
-    </style>
-
-</head>
-
-<body>
-
-    <div id="wrap">
-
-        <div class="container">
-            <div class="jumbotron">
-                <h1>Bem-vindo ao <span class="fontelogo">EventeX!</span></h1>
-                <br>
-                <p class="lead">O evento mais sensacional do ano depois do Dev in Rio! Você não pode perder esta oportunidade!</p>
-                <p><a class="btn btn-lg btn-warning disabled" href="#">Inscrição <b>somente</b> no próximo domingo!</a></p>
-            </div>
-
-        </div><!-- /container -->
-    </div><!-- /wrap -->
-
-    <div id="footer">
-
-        <div class="container">
-            <p class="text-muted credit">Para dúvidas e mais informações <a href="#"><b>kind76@gmail.com</b></a>.</p>
-        </div><!-- /container -->
-
-    </div><!-- /footer -->
-
-</body>
-</html>
+{% block content %}
+<div class="jumbotron">
+    <h1>Bem-vindo ao <span class="fontelogo">EventeX!</span></h1>
+    <br>
+    <p class="lead">O evento mais sensacional do ano depois do Dev in Rio! Você não pode perder esta oportunidade!</p>
+    <p><a class="btn btn-lg btn-primary" href="/inscricao/">Inscrições abertas! <strong>Clique aqui</strong>!</a></p>
+</div>
+{% endblock content %}
