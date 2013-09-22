@@ -1,1 +1,17 @@
-404.html
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="well">
+    <h1>Ewwwww, que feio! Página não encontrada! <small>Erro 404</small></h1>
+    <br />
+    <p>A página que você tentou acessar não foi encontrada. Caso você tenha um bom coração reporte o erro para: <a href="#"><b>kind76@gmail.com</b></a>.</p>
+    <p><b>Ou você pode voltar para página principal cliando abaixo:</b></p>
+    <br />
+
+    <a class="btn btn-info btn-lg btn-block" href="/">
+        <span class="glyphicon glyphicon-home"></span> <strong>Quero voltaaaaar!</strong>
+    </a>
+</div>
+
+{% endblock content %}

@@ -9,39 +9,40 @@
         <!-- Form Name -->
         <legend>Formulário de inscrição</legend>
 
-        <!-- Text input-->
         <div class="form-group">
-            <label class="control-label">Nome</label>
+            <label for="{{ form.name.id_for_label }}" class="control-label">{{ form.name.label }}</label>
             <div class="controls">
-                <input id="name" name="name" placeholder="Ex: José da Silva" class="form-control" required="" type="text">
-
+{#                 <input placeholder="Ex: José da Silva" class="form-control" required="" type="text"> #}
+            {{ form.name }}
+            {{ form.name.errors }}
             </div>
         </div>
 
-        <!-- Text input-->
         <div class="form-group">
-            <label class="control-label">CPF</label>
+            <label for="{{ form.cpf.id_for_label }}" class="control-label">{{ form.cpf.label }}</label>
             <div class="controls">
-                <input id="cpf" name="cpf" placeholder="Ex: 00000000000" class="form-control" required="" type="text">
-
+{#                 <input placeholder="Ex: 00000000000" class="form-control" required="" type="text"> #}
+            {{ form.cpf }}
+            {{ form.cpf.errors }}
             </div>
         </div>
 
-        <!-- Prepended text-->
         <div class="form-group">
-            <label class="control-label">Email</label>
+            <label for="{{ form.email.id_for_label }}" class="control-label">{{ form.email.label }}</label>
             <div class="input-group">
                 <span class="input-group-addon">@</span>
-                <input type="text" class="form-control" placeholder="seu@email.com">
+{#                 <input class="form-control" placeholder="seu@email.com" type="text"> #}
+            {{ form.email }}
+            {{ form.email.errors }}
             </div>
         </div>
 
-        <!-- Text input-->
         <div class="form-group">
-            <label class="control-label">Telefone</label>
+            <label for="{{ form.phone.id_for_label }}" class="control-label">{{ form.phone.label }}</label>
             <div class="controls">
-                <input id="telefone" name="telefone" placeholder="Ex: 8211111111" class="form-control" required="" type="text">
-
+{#                 <input id="telefone" name="telefone" placeholder="Ex: 8211111111" class="form-control" required="" type="text"> #}
+            {{ form.phone }}
+            {{ form.phone.errors }}
             </div>
         </div>
 
