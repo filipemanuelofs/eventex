@@ -11,5 +11,4 @@ urlpatterns = patterns('',
         name='subscribe'),
     url(r'^inscricao/(\d+)/$', 'eventex.subscriptions.views.detail',
         name='detail'),
-
 )
