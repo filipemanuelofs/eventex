@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 
-<div class="well">
 {% block content %}
-<p>Parabéns {{ subscription.name }}, </p>
-<p>
-    sua inscrição foi realizada em
-    {{ subscription.created_at|date:"d/m/Y" }}.
-</p>
-<p>Em breve entraremos em contato pelo
-{% if subscription.phone %}
-    telefone {{ subscription.phone }}
-{% else %}
-    email {{ subscription.email }}
-{% endif %}
-</p>
-{% endblock content%}
+<div class="alert alert-success">
+    <h1>Parabéns <strong>{{ subscription.name }}</strong>!</h1>
+
+    <span>Sua inscrição foi realizada em {{ subscription.created_at|date:"d/m/Y" }}.</span>
+
+    <span>Em breve entraremos em contato pelo
+        {% if subscription.phone %}
+        telefone {{ subscription.phone }}.
+        {% else %}
+        email {{ subscription.email }}.
+        {% endif %}
+    </span>
+    <br>
+    <br>
+    <a class="btn btn-info btn-lg btn-block" href="/">
+        <span class="glyphicon glyphicon-home"></span> <strong>Voltar para página principal</strong>
+    </a>
 </div>
+{% endblock content%}
