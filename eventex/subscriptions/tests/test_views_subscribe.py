@@ -3,11 +3,12 @@
 from django.test import TestCase
 from eventex.subscriptions.forms import SubscriptionForm
 from eventex.subscriptions.models import Subscription
+from django.core.urlresolvers import reverse as r
 
 
 class SubscribeTest(TestCase):
     def setUp(self):
-        self.resp = self.client.get('/inscricao/')
+        self.resp = self.client.get(r('subscriptions:subscribe'))
 
     def test_get(self):
         """
@@ -51,7 +52,7 @@ class SubscribePostTest(TestCase):
                     cpf='06616141403',
                     email='kind76@gmail.com',
                     phone='82-96427829')
-        self.resp = self.client.post('/inscricao/', data)
+        self.resp = self.client.post(r('subscriptions:subscribe'), data)
 
     def test_post(self):
         """
@@ -72,7 +73,7 @@ class SubscribeInvalidPostTest(TestCase):
                     cpf='000000000000',  # Wrong field
                     email='kind76@gmail.com',
                     phone='82-96427829')
-        self.resp = self.client.post('/inscricao/', data)
+        self.resp = self.client.post(r('subscriptions:subscribe'), data)
 
     def test_post(self):
         """
