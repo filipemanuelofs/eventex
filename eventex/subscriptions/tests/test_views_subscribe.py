@@ -6,7 +6,7 @@ from eventex.subscriptions.models import Subscription
 from django.core.urlresolvers import reverse as r
 
 
-class SubscribeTest(TestCase):
+class SubscribeTest(TestCase):  
     def setUp(self):
         self.resp = self.client.get(r('subscriptions:subscribe'))
 
@@ -28,7 +28,8 @@ class SubscribeTest(TestCase):
         HTML must contains this itens
         """
         self.assertContains(self.resp, '<form ')
-        self.assertContains(self.resp, '<input ', 5)
+        self.assertContains(self.resp, '<input ', 7)
+        self.assertContains(self.resp, 'type="text"', 6)
         self.assertContains(self.resp, '<button')
 
     def test_has_form(self):
@@ -92,3 +93,14 @@ class SubscribeInvalidPostTest(TestCase):
         Do not save data
         """
         self.assertFalse(Subscription.objects.exists())
+
+
+class TemplateRegressionTest(TestCase):
+    def test_template_has_non_field_errors(self):
+        """
+        Check if non_field_erros are shown in template
+        """
+        invalid_data = dict(name='Filipe Manuel', cpf='12345678901')
+        response = self.client.post(r('subscriptions:subscribe'), invalid_data)
+
+        self.assertContains(response, '<ul class="errorlist">'  )

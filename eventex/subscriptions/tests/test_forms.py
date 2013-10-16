@@ -24,8 +24,9 @@ class SubscriptionFormTest(TestCase):
         """
         CPF must have 11 digits
         """
-        form = self.make_validated_form(cpf = '1234')
+        form = self.make_validated_form(cpf='1234')
         self.assertItemsEqual(['cpf'], form.errors)
+
 
     def test_email_is_optional(self):
         """
@@ -34,11 +35,28 @@ class SubscriptionFormTest(TestCase):
         form = self.make_validated_form(email='')
         self.assertFalse(form.errors)
 
+
+    def test_name_must_be_capitalize(self):
+        """
+        Name must be capitalized
+        """
+        form = self.make_validated_form(name='FILIPE manuel')
+        self.assertEqual('Filipe Manuel', form.cleaned_data['name'])
+
+
+    def test_must_inform_email_or_phone(self):
+        """
+        Email and phone are optional, but one must be informed
+        """
+        form = self.make_validated_form(email='', phone_0='', phone_1='')
+        self.assertItemsEqual(['__all__'], form.errors)
+
     def make_validated_form(self, **kwargs):
         data = dict(name='Filipe Manuel',
                     cpf='06616141403',
                     email='kind76@gmail.com',
-                    phone='82-96427829')
+                    phone_0='82',
+                    phone_1='96427829')
         data.update(kwargs)
         form = SubscriptionForm(data)
         form.is_valid()
