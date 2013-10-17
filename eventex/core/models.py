@@ -10,12 +10,15 @@ class Speaker(models.Model):
     url = models.URLField(_(u'URL'))
     description = models.TextField(_(u'Descrição'), blank=True)
 
+
     class Meta:
         verbose_name = _(u'palestrante')
         verbose_name_plural = _(u'palestrantes')
 
+
     def __unicode__(self):
         return self.name
+
 
     @models.permalink
     def get_absolute_url(self):
@@ -37,6 +40,7 @@ class Contact(models.Model):
     phones = KindContactManager('P')
     faxes = KindContactManager('F')
 
+
     def __unicode__(self):
         return self.value
 
@@ -46,16 +50,24 @@ class Talk(models.Model):
     start_time = models.TimeField(blank=True)
     speakers = models.ManyToManyField('Speaker', verbose_name=_(u'palestrante'))
 
+
     class Meta:
         verbose_name = _(u'palestra')
         verbose_name_plural = _(u'palestras')
 
+    objects = PeriodManager()
+
+
     def __unicode__(self):
         return self.title
+    
+
+    def get_absolute_url(self):
+        return '/palestras/%d/' % self.pk
+
+
+class Course(Talk):
+    slots = models.IntegerField()
+    notes = models.TextField()
 
     objects = PeriodManager()
-    
-    # @models.permalink
-    def get_absolute_url(self):
-        # return ('core:talk_list', (), {'pk': self.pk})
-        return '/palestras/%d/' % self.pk
